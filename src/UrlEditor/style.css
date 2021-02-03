@@ -1,0 +1,52 @@
+.url-holder {
+    width: 576px;
+    height: 80px;
+    margin: 10px auto;
+    border: 1px solid rgb(117, 81, 233);
+    border-radius: 50px;
+    display: flex;
+}
+
+.url-holder-div {
+    display: flex;
+    margin-top: 18px;
+    margin-left: 20px;
+}
+
+.linktree-div {
+    font-size: 32px;
+    letter-spacing: -0.64px;
+    color: rgb(38, 50, 56);
+    margin-left: 50px;
+}
+
+.input-holder {
+    margin-left: 1px;
+    width: 50%;
+}
+
+.url-editor {
+    border: none;
+    width: 100%;
+    font-size: 32px;
+    letter-spacing: -0.64px;
+    color: rgb(38, 50, 56);
+}
+
+.url-editor:focus {
+    outline: none;
+}
+
+@media only screen and (max-width: 770px) {
+    .url-holder {
+      width: 320px;
+      height: 64px;
+    }
+  }
+
+
+@media only screen and (max-width: 400px) {
+    .url-holder {
+      width: 100%;
+    }
+  }

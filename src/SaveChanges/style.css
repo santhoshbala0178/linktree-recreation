@@ -1,0 +1,27 @@
+.save-changes-button:hover {
+    cursor: pointer;
+}
+
+.save-changes-button {
+    height: 48px;
+    border-radius: 10px;
+    border: none;
+    color: rgb(255, 255, 255);
+    background: rgb(117, 81, 233);
+    font-family: Karla, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Oxygen, Cantarell, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    padding: 12px 24px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.save-changes-button:focus {
+    outline: none;
+}
+
+.save-changes-button:disabled {
+    background-color: gray;
+    cursor:initial;
+}

@@ -1,0 +1,9 @@
+.logo-icon {
+    height: 20px;
+    width: 85px;
+}
+
+
+.logo-icon:hover {
+    cursor: pointer;
+}

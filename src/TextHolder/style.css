@@ -1,0 +1,18 @@
+.text-holder {
+    padding: 10px 5px;
+    margin: 0px 10px;
+}
+
+.text-editor {
+    width: 100%;
+    height: 30px;
+    border: none;
+    color: #282f37;
+    border-bottom: grey 1px solid;
+    font-family: Karla, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Oxygen, Cantarell, sans-serif;
+    font: 400 13.3333px Arial;
+}
+
+.text-editor:focus {
+    outline: none;
+}
