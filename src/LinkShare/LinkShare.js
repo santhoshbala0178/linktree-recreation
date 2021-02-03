@@ -8,7 +8,7 @@ function LinkShare(props) {
             <span className="linktree-share-text">My Linktree:</span>
             <div>
                 <Link to={`/share/${props.username}`} className="linktree-share-link" >
-                        {`http://linktree/share/${props.username}`}
+                        {`https://priceless-johnson-be9261.netlify.app/share/${props.username}`}
                 </Link>
             </div>
         </div>
