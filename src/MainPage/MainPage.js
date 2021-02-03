@@ -65,9 +65,11 @@ function MainPage(props) {
     <div className="main-page-wrapper">
         {loadState && <Loader/>}
         <div className="left-panel">
-            <div class="mainpage-logo-holder">
-                <LogoIcon/>
-            </div>
+            <Link to="/">
+                <div class="mainpage-logo-holder">
+                    <LogoIcon/>
+                </div>
+            </Link>
         </div>
         <div className="main-panel">
             <div className="main-panel-header">
