@@ -5,12 +5,14 @@ import {useHistory, browserHistory} from "react-router";
 import Logo from "../Logo";
 import TextHolder from "../TextHolder";
 import Loader from "../Loader";
+import ErrorMessageHolder from "../ErrorMessageHolder";
 import firebase from "../Firebase";
 import {addNewLink, modifyUserDetails, setSignedInState} from "../action";
 
 function LoginUser(props) {
     let history = useHistory()
     const [loadState, setLoadState] = useState(false)
+    const [errorState, setErrorState] = useState(false)
 
     function handleOnClick(e) {
         setLoadState(true)
@@ -53,6 +55,7 @@ function LoginUser(props) {
                 setLoadState(false)
               }
               else {
+                setErrorState(true)
                 props.modifyUserDetails({
                     type: "MODIFY_USERNAME",
                     username: ""
@@ -79,6 +82,7 @@ function LoginUser(props) {
                 <div className="login-block">
                     <TextHolder placeholder="Username" field="login-username" value={props.username}/>
                     <TextHolder placeholder="Password" field="login-password" value={props.password}/>
+                    {errorState &&  <ErrorMessageHolder message="Username or Password is incorrect"/>}
                     <div className="login-button-holder">
                         <button className="login-button" onClick={(e) => handleOnClick(e)}
                         disabled={(props.username) && (props.password)?false:true}>Log In</button>

@@ -19,7 +19,6 @@ import {setSignedInState} from "../action"
 
 function App(props) {
     useEffect(() => {
-        console.log(sessionStorage)
         if (sessionStorage.getItem("login")==="true"){
             props.setSignedInState(true)
         }

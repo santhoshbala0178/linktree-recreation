@@ -5,6 +5,7 @@ import "./style.css";
 import Logo from "../Logo";
 import TextHolder from "../TextHolder";
 import LoginButton from "../LoginButton";
+import ErrorMessageHolder from "../ErrorMessageHolder";
 import firebase from "../Firebase";
 import Loader from "../Loader";
 import { addNewLink, modifyUserDetails, resetAllLink, setSignedInState} from "../action";
@@ -12,6 +13,8 @@ import { addNewLink, modifyUserDetails, resetAllLink, setSignedInState} from "..
 function RegisterNewUser(props) {
     let history = useHistory()
     const [loadState, setLoadState] = useState(false)
+    const [errorState, setErrorState] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
 
     function handleOnClick(e) {
         setLoadState(true)
@@ -20,6 +23,8 @@ function RegisterNewUser(props) {
             props.modifyUserDetails({
                 type: "RESET_DETAILS"
             })
+            setErrorState(true)
+            setErrorMessage("Password and Repeat Password does not match!")
             setLoadState(false)
         }
         else {
@@ -39,10 +44,11 @@ function RegisterNewUser(props) {
 
                 
                 if (userNameExists) {
-                    console.log("Username already Exists")
                     props.modifyUserDetails({
                         type: "RESET_DETAILS"
                     })
+                    setErrorState(true)
+                    setErrorMessage("Username is already taken!")
                     setLoadState(false)
                 }
                 else {
@@ -82,6 +88,7 @@ function RegisterNewUser(props) {
                     <TextHolder placeholder="Username" field="register-username" value={props.username}/>
                     <TextHolder placeholder="Password" field="register-password" value={props.password}/>
                     <TextHolder placeholder="Repeat password" field="register-repeat-password" value={props.repeatPassword}/>
+                    {errorState && <ErrorMessageHolder message={errorMessage}/>}
                     <div className="register-button-holder">
                         <button className='register-button' onClick={(e) => handleOnClick(e)}
                         disabled={(props.username) && (props.password) && (props.repeatPassword)?false:true}>Register</button>

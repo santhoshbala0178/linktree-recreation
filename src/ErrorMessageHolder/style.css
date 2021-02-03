@@ -1,0 +1,9 @@
+.error-message-holder {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    background: rgb(117, 81, 233);
+    margin: 0px 10px;
+    border-radius: 10px;
+    color: white;
+}
