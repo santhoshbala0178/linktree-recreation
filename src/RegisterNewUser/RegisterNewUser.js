@@ -94,7 +94,7 @@ function RegisterNewUser(props) {
                         disabled={(props.username) && (props.password) && (props.repeatPassword)?false:true}>Register</button>
                     </div>
                     <div className="login-holder">
-                        <div className="main-login-wrapper">
+                        <div className="register-login-wrapper">
                             <span style={{marginRight:'5px'}}>Already on Linktree?</span>
                             <LoginButton/>
                         </div>

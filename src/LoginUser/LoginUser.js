@@ -78,7 +78,7 @@ function LoginUser(props) {
             {loadState && <Loader/>}
             <div className="login-user-content">
                 <Logo/>
-                <div className="login-header">Log in to continue to your Linkedin admin</div>
+                <div className="login-header">Log in to continue to your Linktree admin</div>
                 <div className="login-block">
                     <TextHolder placeholder="Username" field="login-username" value={props.username}/>
                     <TextHolder placeholder="Password" field="login-password" value={props.password}/>

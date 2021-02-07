@@ -25,6 +25,7 @@
     width: 50%;
     height: 50%;
     padding: 20px 0px;
+    min-width: 350px;
 }
 
 .register-button-holder {
@@ -52,8 +53,19 @@
     background-color: gray;
 }
 
-.login-holder {
-    margin: auto;
-    width: 50%;
+.register-login-wrapper {
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: center;
 }
 
+
+@media only screen and (max-width: 350px) {
+    .register-user-content {
+        min-width: 100%;
+    }
+    .register-block {
+        min-width: 100%;
+    }
+}

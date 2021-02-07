@@ -21,6 +21,9 @@
     outline: none;
 }
 
+.save-changes-button:hover{
+    background: rgb(85, 81, 233);
+}
 .save-changes-button:disabled {
     background-color: gray;
     cursor:initial;

@@ -21,3 +21,10 @@
     padding: 10px;
     display: flex;
 }
+
+
+@media only screen and (max-width: 770px) {
+    .link-holder {
+        width: 90%;
+    }
+  }

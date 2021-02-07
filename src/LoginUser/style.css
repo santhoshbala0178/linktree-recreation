@@ -25,6 +25,7 @@
     width: 50%;
     height: 50%;
     padding: 20px 0px;
+    min-width: 450px;
 }
 
 .login-button-holder {
@@ -50,4 +51,11 @@
 
 .login-button:disabled {
     background-color: gray;
+}
+
+
+@media only screen and (max-width: 450px) {
+    .login-block {
+        min-width: 100%;
+    }
 }

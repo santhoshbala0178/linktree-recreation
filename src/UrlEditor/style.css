@@ -9,15 +9,14 @@
 
 .url-holder-div {
     display: flex;
-    margin-top: 18px;
-    margin-left: 20px;
+    margin: auto;
 }
 
 .linktree-div {
     font-size: 32px;
     letter-spacing: -0.64px;
     color: rgb(38, 50, 56);
-    margin-left: 50px;
+    margin-left: 2%;
 }
 
 .input-holder {
