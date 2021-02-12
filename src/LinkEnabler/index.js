@@ -1,3 +1,3 @@
-import LinkEnabler from "./LinkEnabler"
+import LinkEnabler from './LinkEnabler.jsx';
 
 export default LinkEnabler;

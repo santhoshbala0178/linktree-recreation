@@ -1,3 +1,3 @@
-import LinkShare from "./LinkShare";
+import LinkShare from './LinkShare.jsx';
 
 export default LinkShare;

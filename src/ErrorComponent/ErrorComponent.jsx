@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 class ErrorComponent extends React.Component {
   constructor(props) {
@@ -6,7 +6,7 @@ class ErrorComponent extends React.Component {
     this.state = { hasError: false };
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error) {
     console.log(error);
   }
 

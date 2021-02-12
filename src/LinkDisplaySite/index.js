@@ -1,3 +1,3 @@
-import LinkDisplaySite from "./LinkDisplaySite";
+import LinkDisplaySite from './LinkDisplaySite.jsx';
 
 export default LinkDisplaySite;

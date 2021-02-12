@@ -1,17 +1,17 @@
-var HTMLWebPackPlugin = require("html-webpack-plugin");
+const HTMLWebPackPlugin = require("html-webpack-plugin");
 
-var HTMLWebPackPluginConfig = new HTMLWebPackPlugin({
+const HTMLWebPackPluginConfig = new HTMLWebPackPlugin({
   template: __dirname + "/public/index.html",
   filename: "index.html",
   inject: "body",
 });
 
 module.exports = {
-  entry: __dirname + "/src/index.js",
+  entry: __dirname + "/src/index.jsx",
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: "babel-loader",
       },

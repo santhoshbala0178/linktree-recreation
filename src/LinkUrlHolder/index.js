@@ -1,3 +1,3 @@
-import LinkUrlHolder from "./LinkUrlHolder";
+import LinkUrlHolder from './LinkUrlHolder.jsx';
 
 export default LinkUrlHolder;

@@ -1,3 +1,3 @@
-import ErrorMessageHolder from "./ErrorMessageHolder";
+import ErrorMessageHolder from './ErrorMessageHolder.jsx';
 
 export default ErrorMessageHolder;

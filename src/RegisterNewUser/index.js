@@ -1,3 +1,3 @@
-import RegisterNewUser from "./RegisterNewUser";
+import RegisterNewUser from './RegisterNewUser.jsx';
 
 export default RegisterNewUser;

@@ -1,4 +1,3 @@
-import LinkHolder from "./LinkHolder";
-
+import LinkHolder from './LinkHolder.jsx';
 
 export default LinkHolder;

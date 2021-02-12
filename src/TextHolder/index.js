@@ -1,3 +1,3 @@
-import TextHolder from "./TextHolder";
+import TextHolder from './TextHolder.jsx';
 
 export default TextHolder;

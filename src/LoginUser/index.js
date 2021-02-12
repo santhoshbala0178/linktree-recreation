@@ -1,3 +1,3 @@
-import LoginUser from "./LoginUser";
+import LoginUser from './LoginUser.jsx';
 
 export default LoginUser;

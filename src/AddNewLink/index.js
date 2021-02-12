@@ -1,3 +1,3 @@
-import AddNewLink from "./AddNewLink"
+import AddNewLink from './AddNewLink.jsx';
 
 export default AddNewLink;

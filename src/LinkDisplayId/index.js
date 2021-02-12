@@ -1,3 +1,3 @@
-import LinkDisplayId from "./LinkDisplayId";
+import LinkDisplayId from "./LinkDisplayId.jsx";
 
 export default LinkDisplayId;
