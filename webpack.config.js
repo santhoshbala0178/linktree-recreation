@@ -1,15 +1,25 @@
 const HTMLWebPackPlugin = require('html-webpack-plugin');
 
 const HTMLWebPackPluginConfig = new HTMLWebPackPlugin({
-  template: __dirname + '/public/index.html',
+  template: `${__dirname}/public/index.html`,
   filename: 'index.html',
   inject: 'body',
 });
 
 module.exports = {
-  entry: __dirname + '/src/index.jsx',
+  mode: 'development',
+  node: {
+    fs: 'empty',
+    child_process: 'empty',
+  },
+  entry: `${__dirname}/src/index.tsx`,
   module: {
     rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        loader: 'ts-loader',
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -35,8 +45,9 @@ module.exports = {
   },
   output: {
     filename: 'transformed.js',
-    path: __dirname + '/build',
+    path: `${__dirname}/build`,
     publicPath: '/',
   },
   plugins: [HTMLWebPackPluginConfig],
+  resolve: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
 };
