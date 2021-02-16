@@ -31,8 +31,8 @@ const LinkDisplay: React.FC<Props> = ({ from, username, links }) => {
       const dbRef = firebase.database().ref();
       const usersRef = dbRef.child('Users');
 
-      usersRef.once('value', (snapshot: IAllDBLinks) => {
-        const dbLinks = [] as IAllLinks;
+      usersRef.once('value', (snapshot) => {
+        const dbLinks: INewLink[] = [];
         snapshot.forEach((data) => {
           const dataVal = data.val();
           if (paramUsername === dataVal.username) {

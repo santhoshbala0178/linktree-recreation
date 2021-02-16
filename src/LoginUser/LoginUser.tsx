@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './style.css';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router';
 import Logo from '../Logo';
 import TextHolder from '../TextHolder';
 import Loader from '../Loader';
@@ -41,7 +40,6 @@ const LoginUser: React.FC<Props> = ({
   modifyUserDetailsFunc,
   setSignedInStateFunc,
 }) => {
-  const history = useHistory();
   const [loadState, setLoadState] = useState(false);
   const [errorState, setErrorState] = useState(false);
 
@@ -69,32 +67,29 @@ const LoginUser: React.FC<Props> = ({
           modifyUserDetailsFunc({
             type: 'LOGIN_STATUS',
             login: true,
-            id: data.key,
+            id: data.key !== null ? data.key : '',
           });
 
           sessionStorage.setItem('login', 'true');
           sessionStorage.setItem(
             'username',
-            username !== undefined ? username : '',
+            username !== undefined ? username : ''
           );
-          sessionStorage.setItem('id', data.key);
-
-          setSignedInStateFunc(true);
-          history.push('/admin');
-
+          sessionStorage.setItem('id', data.key !== null ? data.key : '');
           userFound = true;
         }
       });
 
       if (userFound) {
         setLoadState(false);
+        setSignedInStateFunc(true);
       } else {
         setErrorState(true);
         modifyUserDetailsFunc({
           type: 'RESET_DETAILS',
         });
+        setLoadState(false);
       }
-      setLoadState(false);
     });
   }
   return (

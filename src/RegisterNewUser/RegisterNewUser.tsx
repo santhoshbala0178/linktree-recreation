@@ -72,28 +72,26 @@ const RegisterNewUser: React.FC<Props> = ({
           setErrorMessage('Username is already taken!');
           setLoadState(false);
         } else {
-          const id = new Date().valueOf().toString();
-          usersRef.push({
+          const id = usersRef.push({
             username,
             password,
             Links: [],
-          });
+          }).key;
           resetAllLinkFunc();
-          setSignedInStateFunc(true);
-          history.push('/admin');
           modifyUserDetailsFunc({
             type: 'LOGIN_STATUS',
             login: true,
-            id,
+            id: id !== null ? id : '',
           });
           sessionStorage.setItem('login', 'true');
           sessionStorage.setItem(
             'username',
             username !== undefined ? username : '',
           );
-          sessionStorage.setItem('id', id);
+          sessionStorage.setItem('id', id !== null ? id : '');
 
           setLoadState(false);
+          setSignedInStateFunc(true);
         }
       });
     }

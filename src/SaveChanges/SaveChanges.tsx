@@ -25,14 +25,17 @@ const SaveChanges: React.FC<Props> = ({
 }) => {
   function handleOnClick() {
     const dbRef = firebase.database().ref();
-    const userDataRef = dbRef.child('Users').child(id);
 
-    userDataRef.update({ Links: links });
+    if (id) {
+      const userDataRef = dbRef.child('Users').child(id);
 
-    saveUserChangesFunc({
-      type: 'SAVE_CHANGE_STATE',
-      saveState: false,
-    });
+      userDataRef.update({ Links: links });
+
+      saveUserChangesFunc({
+        type: 'SAVE_CHANGE_STATE',
+        saveState: false,
+      });
+    }
   }
 
   return (

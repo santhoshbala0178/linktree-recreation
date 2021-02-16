@@ -59,27 +59,31 @@ const MainPage: React.FC<Props> = ({
         id: id !== null ? id : undefined,
       });
 
-      const dbRef = firebase.database().ref();
-      const usersRef = dbRef.child('Users');
+      if (links.length === 0) {
+        const dbRef = firebase.database().ref();
+        const usersRef = dbRef.child('Users');
 
-      usersRef.once('value', (snapshot) => {
-        snapshot.forEach((data) => {
-          const dataVal = data.val();
-          if (sessionUsername === dataVal.username) {
-            if (dataVal.Links) {
-              Object.keys(dataVal?.Links).map((eachKey) => {
-                addNewLinkFunc({
-                  name: dataVal.Links[eachKey].name,
-                  id: dataVal.Links[eachKey].id,
-                  url: dataVal.Links[eachKey].url,
-                  enable: dataVal.Links[eachKey].enable,
+        usersRef.once('value', (snapshot) => {
+          snapshot.forEach((data) => {
+            const dataVal = data.val();
+            if (sessionUsername === dataVal.username) {
+              if (dataVal.Links) {
+                Object.keys(dataVal?.Links).map((eachKey) => {
+                  addNewLinkFunc({
+                    name: dataVal.Links[eachKey].name,
+                    id: dataVal.Links[eachKey].id,
+                    url: dataVal.Links[eachKey].url,
+                    enable: dataVal.Links[eachKey].enable,
+                  });
                 });
-              });
+              }
             }
-          }
+          });
+          setLoadState(false);
         });
+      } else {
         setLoadState(false);
-      });
+      }
     } else if (!loginStatus) {
       history.push('/login');
     }
@@ -111,7 +115,11 @@ const MainPage: React.FC<Props> = ({
             </div>
             {links &&
               links.map((eachLink, i) => (
-                <LinkHolder key={`holder${i + 1}`} linkData={eachLink} />
+                <LinkHolder
+                  key={`holder${i + 1}`}
+                  uniqueId={`holder${i + 1}`}
+                  linkData={eachLink}
+                />
               ))}
           </div>
         </div>

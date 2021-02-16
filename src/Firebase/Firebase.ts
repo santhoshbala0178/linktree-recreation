@@ -10,7 +10,7 @@ const firebaseConfig = {
   storageBucket: 'linktree-d86b1.appspot.com',
   messagingSenderId: '18225515291',
   appId: '1:18225515291:web:5c8b1cbe5f46f2e31ee1be',
-  measurementId: 'G-0DNLLLQ6YL'
+  measurementId: 'G-0DNLLLQ6YL',
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

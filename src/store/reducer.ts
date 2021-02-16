@@ -114,6 +114,7 @@ export const newLinkReducer = (
         ...state,
         links: state.links?.map((eachLink) => {
           if (eachLink.id === actions.id) {
+            console.log(actions.id)
             return { ...eachLink, enable: actions.enable };
           }
           return eachLink;

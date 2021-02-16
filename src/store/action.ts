@@ -6,7 +6,7 @@ export const setSignedInState = (signedIn: boolean): ISignedInState => ({
 });
 
 export const updateUrl = (url: string): IUpdateUrl => ({
-  type: actionTypes.EDIT_LINK_URL,
+  type: actionTypes.EDIT_NEW_URL,
   url,
 });
 

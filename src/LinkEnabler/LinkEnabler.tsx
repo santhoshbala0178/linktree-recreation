@@ -14,6 +14,7 @@ const mapDispatchtoProps = {
 type OwnProps = {
   enable?: boolean;
   id?: number;
+  uniqueId: string;
 };
 
 type Props = ReturnType<typeof mapStatetoProps> &
@@ -23,6 +24,7 @@ type Props = ReturnType<typeof mapStatetoProps> &
 const LinkEnabler: React.FC<Props> = ({
   id,
   enable,
+  uniqueId,
   enableLinkFunc,
   saveUserChangesFunc,
 }) => {
@@ -40,9 +42,9 @@ const LinkEnabler: React.FC<Props> = ({
 
   return (
     <div style={{ paddingBottom: '15px' }}>
-      <label className="switch" htmlFor="enable-link">
+      <label className="switch" htmlFor={uniqueId}>
         <input
-          id="enable-link"
+          id={uniqueId}
           type="checkbox"
           className="link-enable-checkbox"
           checked={enable}

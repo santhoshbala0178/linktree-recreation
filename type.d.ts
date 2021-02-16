@@ -19,7 +19,7 @@ interface INewLink extends Partial<IType> {
 interface IEditLink extends IType, INewLink {}
 
 interface IAllLinks {
-  links?: INewLink[];
+  links: INewLink[];
 }
 
 interface IUserDetails extends Partial<IType> {
