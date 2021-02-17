@@ -1,12 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router';
-import './style.css';
+import styled, { css } from 'styled-components';
 import LinkDisplayId from '../LinkDisplayId';
 import LinkDisplaySite from '../LinkDisplaySite';
 import firebase from '../Firebase';
 import Loader from '../Loader';
 import { RootState } from '../store/store';
+
+const StyledLinkDisplay = styled.div<{ from: string }>`
+  ${(props) =>
+    props.from === 'page' &&
+    css`
+      height: 100%;
+      width: 100%;
+      margin: auto auto;
+      background-color: #76f3fa;
+      background: linear-gradient(0deg, #76f3fa, #3a4eff);
+    `}
+  ${(props) =>
+    props.from !== 'page' &&
+    css`
+      height: 80%;
+      width: 70%;
+      margin: auto auto;
+      border: 20px solid black;
+      border-radius: 50px;
+      background-color: #76f3fa;
+      background: linear-gradient(0deg, #76f3fa, #3a4eff);
+      transform: scale(0.695671) translate3d(0px, 0px, 0px);
+    `}
+`;
+
+const StyledLinkDisplayHolder = styled.div`
+  display: flex;
+`;
+
+const StyledPageContent = styled.div<{ from: string }>`
+  ${(props) =>
+    props.from === 'page' &&
+    css`
+      width: 50%;
+      margin: auto;
+    `}
+`;
 
 type OwnProps = {
   from: string;
@@ -55,16 +92,14 @@ const LinkDisplay: React.FC<Props> = ({ from, username, links }) => {
   }, []);
 
   return (
-    <div
-      className={from === 'page' ? 'link-display-page' : 'link-display-panel'}
-    >
+    <StyledLinkDisplay from={from}>
       {loadState && from === 'page' && <Loader />}
-      <div className={from === 'page' ? 'link-display-page-content' : ''}>
-        <div className="link-display-id-holder">
+      <StyledPageContent from={from}>
+        <StyledLinkDisplayHolder>
           <LinkDisplayId
             username={from === 'page' ? paramUsername : username}
           />
-        </div>
+        </StyledLinkDisplayHolder>
         <div>
           {from === 'display' &&
             links &&
@@ -91,9 +126,9 @@ const LinkDisplay: React.FC<Props> = ({ from, username, links }) => {
               }
             })}
         </div>
-      </div>
-    </div>
+      </StyledPageContent>
+    </StyledLinkDisplay>
   );
-}
+};
 
 export default connect(mapStatetoProps)(LinkDisplay);

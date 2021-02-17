@@ -1,8 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './style.css';
+import styled from 'styled-components';
 import { modifyUserDetails } from '../store/action';
+
+const StyledLoginDiv = styled.div`
+ & :hover{
+  cursor: pointer;
+`;
+
+const StyledLoginLink = styled(Link)`
+  color: black;
+`;
 
 const mapDispatchtoProps = {
   modifyUserDetailsFunc: modifyUserDetails,
@@ -18,17 +27,16 @@ const LoginButton: React.FC<Props> = ({ modifyUserDetailsFunc }) => {
   }
 
   return (
-    <Link to="/login" className="login-link">
-      <div
-        className="login-div"
+    <StyledLoginLink to="/login" >
+      <StyledLoginDiv
         role="button"
         onClick={() => handleOnClick()}
         onKeyDown={() => handleOnClick()}
         tabIndex={0}
       >
         Log In
-      </div>
-    </Link>
+      </StyledLoginDiv>
+    </StyledLoginLink>
   );
 }
 

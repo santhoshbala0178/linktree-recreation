@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './style.css';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Logo from '../Logo';
 import TextHolder from '../TextHolder';
@@ -12,6 +12,65 @@ import {
   setSignedInState,
 } from '../store/action';
 import { RootState } from '../store/store';
+
+const StyledLoginUserPage = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: #f5f6f8;
+`;
+
+const StyledLoginUserContent = styled.div`
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  align-items: center;
+  padding: 50px;
+`;
+
+const StyledLoginHeader = styled.div`
+  font-weight: 600;
+  letter-spacing: 0.5px;
+`;
+
+const StyledLoginBlock = styled.div`
+  background-color: white;
+  margin: 20px 0px;
+  width: 50%;
+  height: 50%;
+  padding: 20px 0px;
+  min-width: 450px;
+
+  @media only screen and (max-width: 450px) {
+    min-width: 100%;
+  }
+`;
+
+const StyledButtonHolder = styled.div`
+  width: 100%;
+  display: flex;
+  padding: 20px 0px;
+  justify-content: space-around;
+`;
+
+const StyledLoginButton = styled.button`
+  background: rgb(117, 81, 233);
+  color: white;
+  height: 30px;
+  width: 80%;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+
+  &: hover {
+    cursor: pointer;
+  }
+
+  &: disabled {
+    background-color: gray;
+  }
+`;
 
 const mapStatetoProps = (state: RootState) => ({
   ...state.userDetailsReducer,
@@ -93,14 +152,14 @@ const LoginUser: React.FC<Props> = ({
     });
   }
   return (
-    <div className="login-user-page">
+    <StyledLoginUserPage>
       {loadState && <Loader />}
-      <div className="login-user-content">
+      <StyledLoginUserContent>
         <Logo />
-        <div className="login-header">
+        <StyledLoginHeader>
           Log in to continue to your Linktree admin
-        </div>
-        <div className="login-block">
+        </StyledLoginHeader>
+        <StyledLoginBlock>
           <TextHolder
             placeholder="Username"
             field="login-username"
@@ -114,19 +173,18 @@ const LoginUser: React.FC<Props> = ({
           {errorState && (
             <ErrorMessageHolder message="Username or Password is incorrect" />
           )}
-          <div className="login-button-holder">
-            <button
+          <StyledButtonHolder>
+            <StyledLoginButton
               type="button"
-              className="login-button"
               onClick={() => handleOnClick()}
               disabled={!(username && password)}
             >
               Log In
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+            </StyledLoginButton>
+          </StyledButtonHolder>
+        </StyledLoginBlock>
+      </StyledLoginUserContent>
+    </StyledLoginUserPage>
   );
 };
 

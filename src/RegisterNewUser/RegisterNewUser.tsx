@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router';
-import './style.css';
+import styled from 'styled-components';
 import Logo from '../Logo';
 import TextHolder from '../TextHolder';
 import LoginButton from '../LoginButton';
@@ -14,6 +13,76 @@ import {
   setSignedInState,
 } from '../store/action';
 import { RootState } from '../store/store';
+
+const StyledRegisterUserPage = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: #f5f6f8;
+`;
+
+const StyledRegisterUserContent = styled.div`
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  align-items: center;
+  padding: 50px;
+
+  @media only screen and (max-width: 350px) {
+    width: 100%;
+  }
+`;
+
+const StyledSignUpHeader = styled.div`
+  font-weight: 600;
+  letter-spacing: 0.5px;
+`;
+
+const StyledRegisterBlock = styled.div`
+  background-color: white;
+  margin: 20px 0px;
+  width: 50%;
+  height: 50%;
+  padding: 20px 0px;
+  min-width: 350px;
+
+  @media only screen and (max-width: 350px) {
+    width: 100%;
+  }
+`;
+
+const StyledRegisterButtonHolder = styled.div`
+  width: 100%;
+  display: flex;
+  padding: 20px 0px;
+  justify-content: space-around;
+`;
+
+const StyledRegisterButton = styled.button`
+  background: rgb(117, 81, 233);
+  color: white;
+  height: 30px;
+  width: 80%;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+
+  &: hover {
+    cursor: pointer;
+  }
+
+  &: disabled {
+    background-color: gray;
+  }
+`;
+
+const StyledLoginWrapper = styled.div`
+  display: flex;
+  margin-top: 20px;
+  width: 100%;
+  justify-content: center;
+`;
 
 const mapStatetoProps = (state: RootState) => ({
   ...state.userDetailsReducer,
@@ -36,7 +105,6 @@ const RegisterNewUser: React.FC<Props> = ({
   resetAllLinkFunc,
   setSignedInStateFunc,
 }) => {
-  const history = useHistory();
   const [loadState, setLoadState] = useState(false);
   const [errorState, setErrorState] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -86,7 +154,7 @@ const RegisterNewUser: React.FC<Props> = ({
           sessionStorage.setItem('login', 'true');
           sessionStorage.setItem(
             'username',
-            username !== undefined ? username : '',
+            username !== undefined ? username : ''
           );
           sessionStorage.setItem('id', id !== null ? id : '');
 
@@ -98,12 +166,14 @@ const RegisterNewUser: React.FC<Props> = ({
   }
 
   return (
-    <div className="register-user-page">
+    <StyledRegisterUserPage>
       {loadState && <Loader />}
-      <div className="regiser-user-content">
+      <StyledRegisterUserContent>
         <Logo />
-        <div className="sign-up-header">Sign up for your Linktree account</div>
-        <div className="register-block">
+        <StyledSignUpHeader>
+          Sign up for your Linktree account
+        </StyledSignUpHeader>
+        <StyledRegisterBlock>
           <TextHolder
             placeholder="Username"
             field="register-username"
@@ -120,25 +190,24 @@ const RegisterNewUser: React.FC<Props> = ({
             value={repeatPassword}
           />
           {errorState && <ErrorMessageHolder message={errorMessage} />}
-          <div className="register-button-holder">
-            <button
+          <StyledRegisterButtonHolder>
+            <StyledRegisterButton
               type="button"
-              className="register-button"
               onClick={() => handleOnClick()}
               disabled={!(username && password && repeatPassword)}
             >
               Register
-            </button>
-          </div>
-          <div className="login-holder">
-            <div className="register-login-wrapper">
+            </StyledRegisterButton>
+          </StyledRegisterButtonHolder>
+          <div>
+            <StyledLoginWrapper>
               <span style={{ marginRight: '5px' }}>Already on Linktree?</span>
               <LoginButton />
-            </div>
+            </StyledLoginWrapper>
           </div>
-        </div>
-      </div>
-    </div>
+        </StyledRegisterBlock>
+      </StyledRegisterUserContent>
+    </StyledRegisterUserPage>
   );
 };
 

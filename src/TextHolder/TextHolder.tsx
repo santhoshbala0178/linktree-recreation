@@ -1,8 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './style.css';
+import styled from 'styled-components';
 import { modifyUserDetails } from '../store/action';
 import { RootState } from '../store/store';
+
+const StyledTextHolder = styled.div`
+  padding: 10px 5px;
+  margin: 0px 10px;
+`;
+
+const StyledTextEditor = styled.input`
+  width: 100%;
+  height: 30px;
+  border: none;
+  color: #282f37;
+  border-bottom: grey 1px solid;
+  font-family: Karla, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Ubuntu, 'Helvetica Neue', Oxygen, Cantarell, sans-serif;
+  font: 400 13.3333px Arial;
+
+  &: focus {
+    outline: none;
+  }
+`;
 
 const mapStatetoProps = (state: RootState) => ({ ...state.userDetailsReducer });
 
@@ -46,15 +66,14 @@ const TextHolder: React.FC<Props> = ({
   }
 
   return (
-    <div className="text-holder">
-      <input
+    <StyledTextHolder>
+      <StyledTextEditor
         placeholder={placeholder}
         value={value}
-        className="text-editor"
         onChange={(e) => handleOnChange(e)}
         type={field.includes('password') ? 'password' : 'text'}
       />
-    </div>
+    </StyledTextHolder>
   );
 };
 

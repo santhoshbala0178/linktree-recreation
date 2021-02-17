@@ -1,8 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './style.css';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { modifyUserDetails } from '../store/action';
+
+const StyledLink = styled(Link)`
+  &: focus {
+    outline: none;
+  }
+`;
+
+const StyledRegisterButton = styled.button`
+  height: 64px;
+  padding: 0px 32px;
+  border-radius: 10px;
+  border: none;
+  color: rgb(255, 255, 255);
+  background: rgb(117, 81, 233);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 const mapDispatchtoProps = {
   modifyUserDetailsFunc: modifyUserDetails,
@@ -19,15 +41,11 @@ const RegisterButton: React.FC<Props> = ({ modifyUserDetailsFunc }) => {
 
   return (
     <div>
-      <Link to="/register" className="nav-link">
-        <button
-          type="button"
-          className="register-div-button"
-          onClick={() => handleOnClick()}
-        >
+      <StyledLink to="/register">
+        <StyledRegisterButton type="button" onClick={() => handleOnClick()}>
           GET STARTED FOR FREE
-        </button>
-      </Link>
+        </StyledRegisterButton>
+      </StyledLink>
     </div>
   );
 };

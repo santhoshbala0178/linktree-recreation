@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
-import './style.css';
+import styled from 'styled-components';
 import LogoIcon from '../LogoIcon';
 import AddNewLink from '../AddNewLink';
 import LinkDisplay from '../LinkDisplay';
@@ -13,6 +13,97 @@ import firebase from '../Firebase';
 import Loader from '../Loader';
 import { addNewLink, modifyUserDetails } from '../store/action';
 import { RootState } from '../store/store';
+
+const StyledMainPageWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+`;
+
+const StyledLeftPanel = styled.div`
+  width: 3%;
+  height: 100%;
+  border-right: 1px solid #d7dce1;
+  margin-left: 5px;
+  box-sizing: border-box;
+
+  @media only screen and (max-width: 770px) {
+    width: 5%;
+  }
+`;
+
+const StyledMainPageLogoHolder = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledMainPanel = styled.div`
+  width: 65%;
+  height: 100%;
+
+  @media only screen and (max-width: 770px) {
+    width: 95%;
+  }
+`;
+
+const StyledMainPanelHeader = styled.div`
+  height: 64px;
+  border-bottom: 1px solid #d7dce1;
+  padding: 10px;
+  box-sizing: border-box;
+`;
+
+const StyledMainPanelLink = styled(Link)`
+  letter-spacing: 1px;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 1rem;
+  text-decoration: none;
+  color: black;
+
+  &: active {
+    color: none;
+  }
+`;
+
+const StyledMainPanelBody = styled.div`
+  height: 100vh;
+  background-color: #f5f6f8;
+`;
+
+const StyledMainPanelContent = styled.div`
+  padding-top: 5%;
+`;
+
+const StyledAddNewLink = styled.div`
+  width: 50%;
+  height: 48px;
+  margin: auto;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-around;
+
+  @media only screen and (max-width: 770px) {
+    width: 100%;
+  }
+`;
+
+const StyledRightPanel = styled.div`
+  width: 32%;
+  height: 100%;
+  border-left: 1px solid #d7dce1;
+`;
+
+const StyledRightPanelHeader = styled.div`
+  height: 64px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #d7dce1;
+`;
+
+const StyledRightPanelBody = styled.div`
+  height: 100vh;
+  background-color: #f5f6f8;
+`;
 
 const mapStatetoProps = (state: RootState) => ({
   ...state.newLinkReducer,
@@ -90,29 +181,27 @@ const MainPage: React.FC<Props> = ({
   }, []);
 
   return (
-    <div className="main-page-wrapper">
+    <StyledMainPageWrapper>
       {loadState && <Loader />}
-      <div className="left-panel">
+      <StyledLeftPanel>
         <Link to="/">
-          <div className="mainpage-logo-holder">
+          <StyledMainPageLogoHolder>
             <LogoIcon />
-          </div>
+          </StyledMainPageLogoHolder>
         </Link>
-      </div>
-      <div className="main-panel">
-        <div className="main-panel-header">
+      </StyledLeftPanel>
+      <StyledMainPanel>
+        <StyledMainPanelHeader>
           <div style={{ padding: '10px' }}>
-            <Link to="/admin" className="main-panel-link">
-              Links
-            </Link>
+            <StyledMainPanelLink to="/admin">Links</StyledMainPanelLink>
           </div>
-        </div>
-        <div className="main-panel-body">
-          <div className="main-body-content">
-            <div className="add-new-link-div">
+        </StyledMainPanelHeader>
+        <StyledMainPanelBody>
+          <StyledMainPanelContent>
+            <StyledAddNewLink>
               <AddNewLink />
               <SaveChanges />
-            </div>
+            </StyledAddNewLink>
             {links &&
               links.map((eachLink, i) => (
                 <LinkHolder
@@ -121,18 +210,18 @@ const MainPage: React.FC<Props> = ({
                   linkData={eachLink}
                 />
               ))}
-          </div>
-        </div>
-      </div>
-      <div className="right-panel">
-        <div className="right-panel-header">
+          </StyledMainPanelContent>
+        </StyledMainPanelBody>
+      </StyledMainPanel>
+      <StyledRightPanel>
+        <StyledRightPanelHeader>
           <LinkShare username={username} />
-        </div>
-        <div className="right-panel-body">
+        </StyledRightPanelHeader>
+        <StyledRightPanelBody>
           <LinkDisplay from="display" username={username} />
-        </div>
-      </div>
-    </div>
+        </StyledRightPanelBody>
+      </StyledRightPanel>
+    </StyledMainPageWrapper>
   );
 };
 

@@ -1,20 +1,35 @@
 import React from 'react';
-import './style.css';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
+const StyledLinkShareHolder = styled.div`
+  padding: 20px;
+  display: flex;
+`;
+
+const StyledLinkShareText = styled.span`
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 5px;
+`;
+
+const StyledLinkShareLink = styled(Link)`
+  color: black;
+`;
 
 type OwnProps = {
   username?: string;
 };
 
 const LinkShare: React.FC<OwnProps> = ({ username }) => (
-  <div className="link-share-holder">
-    <span className="linktree-share-text">My Linktree:</span>
+  <StyledLinkShareHolder>
+    <StyledLinkShareText>My Linktree:</StyledLinkShareText>
     <div>
-      <Link to={`/share/${username}`} className="linktree-share-link">
+      <StyledLinkShareLink to={`/share/${username}`}>
         {`https://priceless-johnson-be9261.netlify.app/share/${username}`}
-      </Link>
+      </StyledLinkShareLink>
     </div>
-  </div>
+  </StyledLinkShareHolder>
 );
 
 export default LinkShare;

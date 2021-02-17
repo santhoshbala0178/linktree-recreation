@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ErrorComponent from '../ErrorComponent';
-import './style.css';
 import Home from '../Home';
 import MainPage from '../MainPage';
 import LinkDisplay from '../LinkDisplay';
