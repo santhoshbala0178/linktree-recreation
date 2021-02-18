@@ -28,10 +28,6 @@ const StyledRegisterUserContent = styled.div`
   align-content: space-around;
   align-items: center;
   padding: 50px;
-
-  @media only screen and (max-width: 350px) {
-    width: 100%;
-  }
 `;
 
 const StyledSignUpHeader = styled.div`
@@ -48,7 +44,7 @@ const StyledRegisterBlock = styled.div`
   min-width: 350px;
 
   @media only screen and (max-width: 350px) {
-    width: 100%;
+    min-width: 100%;
   }
 `;
 

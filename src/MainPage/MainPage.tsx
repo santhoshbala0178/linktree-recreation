@@ -83,7 +83,7 @@ const StyledAddNewLink = styled.div`
   display: flex;
   justify-content: space-around;
 
-  @media only screen and (max-width: 770px) {
+  @media only screen and (max-width: 1000px) {
     width: 100%;
   }
 `;
@@ -92,6 +92,10 @@ const StyledRightPanel = styled.div`
   width: 32%;
   height: 100%;
   border-left: 1px solid #d7dce1;
+
+  @media only screen and (max-width: 770px) {
+    display: none;
+  }
 `;
 
 const StyledRightPanelHeader = styled.div`

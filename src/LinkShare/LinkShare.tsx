@@ -15,6 +15,14 @@ const StyledLinkShareText = styled.span`
 
 const StyledLinkShareLink = styled(Link)`
   color: black;
+
+  @media only screen and (max-width: 1000px) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    width: 50%;
+  }
 `;
 
 type OwnProps = {
@@ -24,11 +32,9 @@ type OwnProps = {
 const LinkShare: React.FC<OwnProps> = ({ username }) => (
   <StyledLinkShareHolder>
     <StyledLinkShareText>My Linktree:</StyledLinkShareText>
-    <div>
-      <StyledLinkShareLink to={`/share/${username}`}>
-        {`https://priceless-johnson-be9261.netlify.app/share/${username}`}
-      </StyledLinkShareLink>
-    </div>
+    <StyledLinkShareLink to={`/share/${username}`}>
+      {`https://priceless-johnson-be9261.netlify.app/share/${username}`}
+    </StyledLinkShareLink>
   </StyledLinkShareHolder>
 );
 

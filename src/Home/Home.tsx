@@ -33,6 +33,10 @@ const StyledNavLeft = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media only screen and (max-width: 350px) {
+    display: none;
+  }
 `;
 
 const StyledNavRight = styled.div`
