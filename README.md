@@ -9,7 +9,7 @@ https://priceless-johnson-be9261.netlify.app/
   * Password - dummy@123
   
 # Video Preview
-https://secure.vidyard.com/organizations/1999087/players/vLnxc486j9Fpq43fstXPaM?edit=true&npsRecordControl=1
+https://share.vidyard.com/watch/vLnxc486j9Fpq43fstXPaM?
 
 ### Tech Stack
   * React
